@@ -1,8 +1,8 @@
 
 {
-  "name": "Heroku Bot",
+  "name": "Stock Market Bot",
   "logo": "https://telegra.ph/file/28a4b1d6bc4fdc263b7bc.jpg",
-  "description": "Heroku's Eassiest Account Manager Bot!",
+  "description": "Stock Market Bot!",
   "keywords": [
     "heroku",
     "best",
@@ -10,7 +10,7 @@
     "manager",
     "3"
   ],
-  "repository": "https://github.com/jinspalakkattu/HerokuMngr-Bot",
+  "repository": "https://github.com/jinspalakkattu/Stock-Market",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable env variables",
@@ -18,7 +18,7 @@
     },
     "TG_BOT_TOKEN": {
       "description": "Your bot token, as a string.",
-      "value": "1948821185:AAHTGNSWETHy9mP14EupiBTMnma4kltzJ9Q"
+      "value": "1725624123:AAEk5bSDRZoWpECQf3CAgrjBPEB6esHmXx8"
     },
     "API_ID": {
         "description": "Your APP ID from my.telegram.org or @UseTGXBot",
@@ -27,10 +27,6 @@
     "API_HASH": {
         "description": "Your API Hash from my.telegram.org or @UseTGXBot",
         "value": "c57bcc4b09591db4f90f60b469e8870f"
-    },
-    "DATABASE_URL": {
-      "description": "Your Database",
-      "value": "postgres://ufstudio:jins2010@misselvirabot.cxcgpm4dmurj.us-east-2.rds.amazonaws.com:5432/MissElviraBot"
     }
   },
     "buildpacks": [
