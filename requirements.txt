@@ -1,0 +1,7 @@
+pytz
+psycopg2-binary
+pyrogram
+tgcrypto
+hachoir
+Pillow
+requests==2.26.0
