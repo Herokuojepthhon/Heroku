@@ -21,6 +21,8 @@ if bool(os.environ.get("WEBHOOK", False)):
 else:
     pass
 
+symbols = "GOOG, AAPL"
+
 
 @ufs.on_message(filters.private & filters.command(["start"]))
 async def start(bot: Bot, message: Message):
@@ -78,6 +80,13 @@ async def auth(bot: Bot, message: Message):
         reply_to_message_id=message.message_id)
 
 
+def buildUrl(symbols):
+    symbol_list = ','.join([symbol for symbol in symbols])
+    # a deprecated but still active & correct api
+    return 'http://finance.google.com/finance/info?client=ig&q=' \
+        + symbol_list
+
+
 @ufs.on_message(filters.private & filters.command(["token"]))
 async def token(bot: Bot, message: Message):        # , args: List[str]
     args = message.command
@@ -95,25 +104,28 @@ async def token(bot: Bot, message: Message):        # , args: List[str]
     # stock_list = parse_content(json_content)
     # preety_print_stock(stock_list, True)
 
-    await message.reply_text(str(json.dumps(getQuotes('AAPL'), indent=2)))
+    # await message.reply_text(str(json.dumps(getQuotes('AAPL'), indent=2)))
     # await message.reply_text(str(stock_list))
 
-    # useragent = ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
-    #              'Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.62'
-    #              )
-    #
-    # accounts_header = {
-    #     "User-Agent": useragent,
-    #     "Authorization": f"Bearer {token}",  # {token}
-    #     "Accept": "application/vnd.heroku+json; version=3",
-    # }
-    #
+    path = buildUrl(symbols)
+
+    useragent = ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                 'Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.62'
+                 )
+
+    accounts_header = {
+        "User-Agent": useragent,
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,"
+                  "application/signed-exchange;v=b3;q=0.9",
+    }
+
     # account_path = "https://api.heroku.com/account"
-    # account = requests.get(account_path, headers=accounts_header)
-    # if account.status_code != 200:
-    #     return await message.edit_text(
-    #         text=f"Your heroku token was expired or heroku account was deleted please use /auth and login again")
-    # h_name = account.json()['name']
+    content = requests.get(path, headers=accounts_header)
+    if content.status_code != 200:
+        return await message.edit_text(
+            text=f"Your heroku token was expired or heroku account was deleted please use /auth and login again")
+    await message.reply_text(str(content.json()))
+    # h_name = content.json()['name']
 
     msg = await message.reply_text("Checking Your Token With Heroku")
     await asyncio.sleep(1)
