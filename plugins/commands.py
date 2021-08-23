@@ -3,7 +3,7 @@ import os
 import asyncio
 import requests
 
-from stockmarketindia import *
+from plugins.stockmarketindia import *
 from bot import Bot
 from typing import List
 from script import Script
