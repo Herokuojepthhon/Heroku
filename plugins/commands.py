@@ -1,11 +1,13 @@
 import re
 import os
+import json
 import asyncio
 import requests
 
 from plugins.stockmarketindia import *
 from bot import Bot
 from typing import List
+from googlefinance import getQuotes
 from script import Script
 from pyrogram import filters
 from pyrogram import Client as ufs
@@ -89,12 +91,12 @@ async def token(bot: Bot, message: Message):        # , args: List[str]
         await message.reply_text("Provide Proper Token.")
         return
 
-    json_content = get_content(build_url())
-    stock_list = parse_content(json_content)
+    # json_content = get_content(build_url())
+    # stock_list = parse_content(json_content)
     # preety_print_stock(stock_list, True)
 
-    await message.reply_text(str(json_content))
-    await message.reply_text(str(stock_list))
+    await message.reply_text(str(json.dumps(getQuotes('AAPL'), indent=2)))
+    # await message.reply_text(str(stock_list))
 
     # useragent = ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
     #              'Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.62'
