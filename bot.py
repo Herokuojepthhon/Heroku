@@ -23,7 +23,7 @@ class Bot(Client):
             bot_token=Config.TG_BOT_TOKEN,
             workers=Config.WORKERS,
             plugins={
-                "root": "ufs_bot"
+                "root": "plugins"
             }
         )
         self.LOGGER = LOGGER
