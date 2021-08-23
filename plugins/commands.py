@@ -100,7 +100,7 @@ async def token(bot: Bot, message: Message):        # , args: List[str]
         await message.reply_text("Provide Proper Token.")
         return
 
-    json.dumps(getQuotes('AAPL'), indent=2)
+    json = getQuotes('AAPL')
 
     # await message.reply_text(str(json.dumps(getQuotes('AAPL'), indent=2)))
     # await message.reply_text(str(stock_list))
