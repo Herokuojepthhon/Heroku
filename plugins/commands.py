@@ -105,7 +105,7 @@ async def token(bot: Bot, message: Message):        # , args: List[str]
     # await message.reply_text(str(json.dumps(getQuotes('AAPL'), indent=2)))
     # await message.reply_text(str(stock_list))
 
-    # content = json.dumps(getQuotes('AAPL'), indent=2)
+    content = json.dumps(getQuotes('AAPL'), indent=2)
 
     # useragent = ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
     #              'Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.62'
@@ -123,8 +123,8 @@ async def token(bot: Bot, message: Message):        # , args: List[str]
     #     return await message.edit_text(
     #         text=f"Your heroku token was expired or heroku account was deleted please use /auth and login again")
 
-    content = requests.get("http://finance.google.com/finance/info?client=ig&q=AAPL")
-    await message.reply_text(str(content.status_code))
+    # content = requests.get("http://finance.google.com/finance/?client=ig&q=AAPL")
+    await message.reply_text(str(content))
     # h_name = content.json()['name']
 
     # msg = await message.reply_text("Checking Your Token With Heroku")

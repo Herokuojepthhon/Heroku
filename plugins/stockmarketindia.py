@@ -29,7 +29,7 @@ def build_url():
     :return:
     """
     symbol_list = ','.join([stock for stock in STOCK_CODE_LIST])
-    return 'http://finance.google.com/finance/info?client=ig&q=' \
+    return 'http://finance.google.com/finance/?client=ig&q=' \
         + symbol_list
 
 
