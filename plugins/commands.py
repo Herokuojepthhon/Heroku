@@ -6,6 +6,7 @@ import requests
 
 from plugins.stockmarketindia import *
 from bot import Bot
+from json import loads
 from typing import List
 from googlefinance import getQuotes
 from script import Script
@@ -100,12 +101,39 @@ async def token(bot: Bot, message: Message):        # , args: List[str]
         await message.reply_text("Provide Proper Token.")
         return
 
+    params = {'q': 'NASDAQ:AAPL', 'output': 'json'}
+    response = requests.get('https://finance.google.com/finance', params=params, allow_redirects=False, timeout=10.0)
+    print(response.status_code)
+    jsonstr = response.text[4:]  # remove first part (not json data)
+    data = loads(jsonstr)
+    print(data)
+    print("t=", data[0]['t'])
+    # print(response.content)
+
+    # json_content = get_content(build_url())
+    #
+    # stock_resp_list = json.loads(json_content)
+    #
+    # list_stock = list()
+    # for stock_resp in stock_resp_list:
+    #     isPositive = False if stock_resp["cp"] != None and len(stock_resp["cp"]) > 0 and stock_resp["cp"][
+    #         0] == '-' else True
+    #
+    #     colored_cp = stock_resp["cp"]
+    #     if isPositive:
+    #         colored_cp = Color.green(stock_resp["cp"])
+    #     else:
+    #         colored_cp = Color.red(stock_resp["cp"])
+    #
+    #     list_stock.append(Stock(stock_resp["t"], stock_resp["l"], stock_resp["c"], colored_cp, stock_resp["lt"]))
+    # stock_list = list_stock
+
     # json = getQuotes('AAPL')
 
     # await message.reply_text(str(json.dumps(getQuotes('AAPL'), indent=2)))
     # await message.reply_text(str(stock_list))
 
-    content = json.dumps(getQuotes('AAPL'), indent=2)
+    # content = json.dumps(getQuotes('AAPL'), indent=2)
 
     # useragent = ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
     #              'Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.62'
@@ -123,8 +151,15 @@ async def token(bot: Bot, message: Message):        # , args: List[str]
     #     return await message.edit_text(
     #         text=f"Your heroku token was expired or heroku account was deleted please use /auth and login again")
 
-    # content = requests.get("http://finance.google.com/finance/?client=ig&q=AAPL")
-    await message.reply_text(str(content))
+    content = requests.get("https://finance.google.com/finance?q=AAPL&output=json")
+    fin_data = json.loads(content.content[6:-2].decode('unicode_escape'))
+
+    # print out some quote data
+    print('Opening Price: {}'.format(fin_data['op']))
+    print('Price/Earnings Ratio: {}'.format(fin_data['pe']))
+    print('52-week high: {}'.format(fin_data['hi52']))
+    print('52-week low: {}'.format(fin_data['lo52']))
+    # await message.reply_text(str(content.json()['Index']))
     # h_name = content.json()['name']
 
     # msg = await message.reply_text("Checking Your Token With Heroku")
