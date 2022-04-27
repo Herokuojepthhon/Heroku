@@ -25,14 +25,14 @@ else:
 symbols = "GOOG, AAPL"
 
 
-@ufs.on_message(filters.private & filters.command(["start"]))
+@ufs.on_message(filters.private & filters.command(["بدء"]))
 async def start(bot: Bot, message: Message):
     buttons = [
         [
-            InlineKeyboardButton('💡 Help', callback_data="help"),
-            InlineKeyboardButton('🧾 About', callback_data="about")],
+            InlineKeyboardButton('💡 مساعدة', callback_data="help"),
+            InlineKeyboardButton('🧾 حول', callback_data="about")],
         [
-            InlineKeyboardButton('🚫 Close', callback_data="close_btn")
+            InlineKeyboardButton('🚫 اغلاق', callback_data="close_btn")
         ]
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
@@ -49,10 +49,10 @@ async def start(bot: Bot, message: Message):
 async def help(bot: Bot, message: Message):
     buttons = [
         [
-            InlineKeyboardButton('🔙 Back', callback_data="help"),
-            InlineKeyboardButton('🧾 About', callback_data="about")],
+            InlineKeyboardButton('🔙 رجوع', callback_data="help"),
+            InlineKeyboardButton('🧾 حول', callback_data="about")],
         [
-            InlineKeyboardButton('🚫 Close', callback_data="close_btn")
+            InlineKeyboardButton('🚫 اغلاق', callback_data="close_btn")
         ]
     ]
 
@@ -68,8 +68,8 @@ async def help(bot: Bot, message: Message):
 async def auth(bot: Bot, message: Message):
     auth_button = [
         [InlineKeyboardButton("Auth Url", url="https://dashboard.heroku.com/account/applications/authorizations/new")],
-        [InlineKeyboardButton("⬅️ Back", callback_data="start"),
-         InlineKeyboardButton("❌  Close", callback_data="close_btn")]
+        [InlineKeyboardButton("⬅️ رجوع", callback_data="start"),
+         InlineKeyboardButton("❌  اغلاق", callback_data="close_btn")]
     ]
 
     reply_markup = InlineKeyboardMarkup(auth_button)
