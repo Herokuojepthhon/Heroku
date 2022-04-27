@@ -29,9 +29,7 @@ He's just a poor student, so every little helps!
 There are two ways of paying him; [PayPal](paypal.me/jinspalakkattu)."""
 
     ABOUT_STRING = """
-🙋 Hey Dear!!
-
-┈•••✿ 𝐌𝐘 𝐃𝐄𝐓𝐀𝐈𝐋𝐒 ✿•••┈
+🙋  ‹اهلاا ›!!
 
 📢الاسم: 🏷️ [Heroku](https://t.me/Herokuojepthonbot) 🏷️ 
 
