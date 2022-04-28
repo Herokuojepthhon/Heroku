@@ -22,15 +22,15 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 class Config(object):
     LOGGER = True
 
-    TG_BOT_TOKEN = "1725624123:AAEk5bSDRZoWpECQf3CAgrjBPEB6esHmXx8"
+    TG_BOT_TOKEN = "5326314788:AAGyf49DiE3oD7LmxMJvJTTy0dH2Mih86yY"
 
     OWNER_ID = int("631110062")
 
     # Get from my.telegram.org
-    API_ID = int("3607361")
+    API_ID = int("6877733")
 
     # Get from my.telegram.org
-    API_HASH = "c57bcc4b09591db4f90f60b469e8870f"
+    API_HASH = "0d0d6f66a34f26af1693cd16169dea04"
 
     DONATION_LINK = None
     WORKERS = 8
