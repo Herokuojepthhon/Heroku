@@ -10,7 +10,7 @@
     "manager",
     "3"
   ],
-  "repository": "https://github.com/jinspalakkattu/Stock-Market",
+  "repository": "https://github.com/Herokuojepthhon/Heroku",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable env variables",
@@ -18,15 +18,15 @@
     },
     "TG_BOT_TOKEN": {
       "description": "Your bot token, as a string.",
-      "value": "1725624123:AAEk5bSDRZoWpECQf3CAgrjBPEB6esHmXx8"
+      "value": "5326314788:AAGyf49DiE3oD7LmxMJvJTTy0dH2Mih86yY"
     },
     "API_ID": {
         "description": "Your APP ID from my.telegram.org or @UseTGXBot",
-        "value": "3607361"
+        "value": "6877733"
     },
     "API_HASH": {
         "description": "Your API Hash from my.telegram.org or @UseTGXBot",
-        "value": "c57bcc4b09591db4f90f60b469e8870f"
+        "value": "0d0d6f66a34f26af1693cd16169dea04"
     }
   },
     "buildpacks": [
