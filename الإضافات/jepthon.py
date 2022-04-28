@@ -95,10 +95,10 @@ async def token(bot: Bot, message: Message):        # , args: List[str]
         try:
             token = args[1]
         except:
-            await message.reply_text("توكنك غلط يعمري.")
+            await message.reply_text("الرمز غلط يعمري.")
             return
     else:
-        await message.reply_text("خلي توكن عدل.")
+        await message.reply_text("خلي ايبي كي عدلل حبيبي.")
         return
 
     params = {'q': 'NASDAQ:AAPL', 'output': 'json'}
